@@ -26,4 +26,15 @@ public class PassengerTest {
     @Test
     public void canGetNumBags(){assertEquals(1, passenger.getNumOfBags());}
 
+
+    @Test
+    public void flightNumberBeginsEmpty(){
+        assertEquals("", passenger.getFlightNumber());
+    }
+
+    @Test
+    public void canSetFlightNumber(){
+        passenger.setFlightNumber("myTest");
+        assertEquals("myTest", passenger.getFlightNumber());
+    }
 }
