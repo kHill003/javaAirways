@@ -1,4 +1,6 @@
 package Journey;
+import java.time.LocalDateTime;
+
 
 import Journey.Airplanes.Plane;
 import People.Crew.AllCrew;
@@ -6,6 +8,7 @@ import People.Crew.CabinCrew;
 import People.Crew.Pilot;
 import People.Passengers.Passenger;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 public class Flight {
     private ArrayList<Pilot> pilots;
@@ -15,7 +18,8 @@ public class Flight {
     private String flightNum;
     private Airports departureAirport;
     private Airports arrivalAirport;
-    private String departureTime;
+    // private String departureTime;
+    private LocalDateTime departureTime;
 
     public Flight(Plane plane, String flightNum, Airports arrivalAirport,
                   Airports departureAirport, String departureTime) {
@@ -26,7 +30,7 @@ public class Flight {
         this.flightNum = flightNum;
         this.arrivalAirport = arrivalAirport;
         this.departureAirport = departureAirport;
-        this.departureTime = departureTime;
+        this.departureTime = this.formatDepartureTime(departureTime);
     }
 
     public int getPilots() {
@@ -92,11 +96,23 @@ public class Flight {
         return (this.plane.getPlaneCapacity() - this.getPassengers());
 
     }
-    public String getDepartureTime(){
+
+    public LocalDateTime getDepartureTime() {
         return departureTime;
     }
-    public String setDepartureTime(String departureTime) {
-        this.departureTime = departureTime;
-        return departureTime;
+
+    public void setDepartureTime(String newDepartureTime) {
+        this.departureTime = this.formatDepartureTime(newDepartureTime);
+    }
+
+    public LocalDateTime formatDepartureTime(String givenDepartureTime) {
+        String[] splitString = givenDepartureTime.split("[/ :]");
+        LocalDateTime newDateTime = LocalDateTime.of(
+                Integer.parseInt(splitString[0]),
+                Integer.parseInt(splitString[1]),
+                Integer.parseInt(splitString[2]),
+                Integer.parseInt(splitString[3]),
+                Integer.parseInt(splitString[4]));
+        return newDateTime;
     }
 }

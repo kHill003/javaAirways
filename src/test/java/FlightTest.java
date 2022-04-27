@@ -25,7 +25,7 @@ public class FlightTest {
 
     @Before
     public void before() {flight = new Flight(new Plane(PlaneTypes.JET_THREE),"78", Airports.DENVER,
-            Airports.EDINBURGH,"13:30");
+            Airports.EDINBURGH,"2022/02/15 10:15");
 
     passenger1 = new Passenger("Lorraine",2);
     passenger2 = new Passenger("Shireen", 1);
@@ -102,12 +102,13 @@ public class FlightTest {
         assertEquals(299, flight.checkRemainingSeats());
     }
     @Test
-    public void canGetDepartureTime(){
-        assertEquals("13:30", flight.getDepartureTime());
+    public void canGetDepartureTime() {
+        assertEquals("2022-02-15T10:15", flight.getDepartureTime().toString());
     }
+
     @Test
-    public void canChangeDepartureTime(){
-        flight.setDepartureTime("14:01");
-        assertEquals("14:01", flight.getDepartureTime());
+    public void canSetDepartureTime() {
+        flight.setDepartureTime("2022/02/15 10:15");
+        assertEquals("2022-02-15T10:15", flight.getDepartureTime().toString());
     }
 }
