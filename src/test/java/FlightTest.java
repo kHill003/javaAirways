@@ -12,6 +12,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class FlightTest {
     Flight flight;
@@ -124,6 +125,12 @@ public class FlightTest {
         ArrayList<Passenger> passengerList = flight.getPassengerManifest();
         int seatNumber = passengerList.get(0).getSeatNumber();
         assertEquals(true, flight.checkForUniqueSeat(seatNumber));
+    }
+    @Test
+    public void checkPassengerCanBeAssignedASeat(){
+        flight.addPassenger(passenger2);
+        ArrayList<Passenger> passengerList = flight.getPassengerManifest();
+        assertNotEquals(0, passengerList.get(0).getSeatNumber());
     }
 
 }

@@ -139,4 +139,13 @@ public class Flight {
 
         return seatsTaken.contains(generatedSeat);
     }
+    public void assignPassengerSeat(Passenger passenger){
+        int passengerSeat = generateRandomSeat();
+
+        while(this.checkForUniqueSeat(passengerSeat)){
+            passengerSeat = generateRandomSeat();
+        }
+
+        passenger.setSeatNumber(passengerSeat);
+    }
 }

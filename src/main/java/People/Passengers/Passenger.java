@@ -37,4 +37,10 @@ public class Passenger extends PeopleSuper {
     public int getSeatNumber() {
         return seatNumber;
     }
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+
 }
