@@ -9,6 +9,8 @@ import People.Passengers.Passenger;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class FlightTest {
@@ -111,4 +113,17 @@ public class FlightTest {
         flight.setDepartureTime("2022/02/15 10:15");
         assertEquals("2022-02-15T10:15", flight.getDepartureTime().toString());
     }
+    @Test
+    public void canGenerateRandomSeat(){
+   flight.generateRandomSeat();
+//check the console- see if random numbers are being generated
+    }
+    @Test
+    public void checkPassengerSeatIsUnique(){
+        flight.addPassenger(passenger1);
+        ArrayList<Passenger> passengerList = flight.getPassengerManifest();
+        int seatNumber = passengerList.get(0).getSeatNumber();
+        assertEquals(true, flight.checkForUniqueSeat(seatNumber));
+    }
+
 }

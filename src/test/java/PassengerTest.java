@@ -37,4 +37,5 @@ public class PassengerTest {
         passenger.setFlightNumber("myTest");
         assertEquals("myTest", passenger.getFlightNumber());
     }
+
 }

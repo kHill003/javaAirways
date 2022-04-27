@@ -7,6 +7,7 @@ import People.Crew.AllCrew;
 import People.Crew.CabinCrew;
 import People.Crew.Pilot;
 import People.Passengers.Passenger;
+import java.util.Random;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -114,5 +115,28 @@ public class Flight {
                 Integer.parseInt(splitString[3]),
                 Integer.parseInt(splitString[4]));
         return newDateTime;
+    }
+    public int generateRandomSeat(){
+        Random rand = new Random();
+
+     int seatNumber = rand.nextInt(this.plane.getPlaneCapacity() + 1);
+        System.out.print(seatNumber);
+        return seatNumber;
+
+    }
+    public ArrayList<Passenger> getPassengerManifest(){
+        return this.passengers;
+    }
+    public void setPassengerFlightNumber(Passenger passenger, String flightNumberToSet){
+        passenger.setFlightNumber(flightNumberToSet);
+    }
+    public boolean checkForUniqueSeat(int generatedSeat){
+        ArrayList<Integer> seatsTaken = new ArrayList<Integer>();
+
+        for(Passenger passenger: this.passengers){
+            seatsTaken.add(passenger.getSeatNumber());
+        }
+
+        return seatsTaken.contains(generatedSeat);
     }
 }
